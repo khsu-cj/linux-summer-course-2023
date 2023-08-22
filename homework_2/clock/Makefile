@@ -1,4 +1,4 @@
-CFLAGS := -std=c11 -Wall -g -O2 -D_GNU_SOURCE -fsanitize=thread
+CFLAGS := -I../include -std=c11 -Wall -g -O2 -D_GNU_SOURCE -fsanitize=thread
 LDFLAGS := -lpthread
 
 ALL := test_pthread test_linux
@@ -6,8 +6,8 @@ ALL := test_pthread test_linux
 all: $(ALL)
 .PHONY: all
 
-test_%: main.c atomic.h  cond.h  futex.h  mutex.h  spinlock.h
-	$(CC) $(CFLAGS) main.c -o $@ $(LDFLAGS)
+test_%: clock.c
+	$(CC) $(CFLAGS) clock.c -o $@ $(LDFLAGS)
 
 test_pthread: CFLAGS += -DUSE_PTHREADS
 test_linux: CFLAGS += -DUSE_LINUX
