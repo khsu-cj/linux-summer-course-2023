@@ -1,4 +1,4 @@
-CFLAGS := -I../include -Wall -g -D_GNU_SOURCE -DUSE_LINUX -fsanitize=thread
+CFLAGS := -I../include -Wall -D_GNU_SOURCE -DUSE_LINUX
 LDFLAGS := -lpthread
 
 ALL := qsort_mt
