@@ -12,6 +12,8 @@ test_pi_origin: main_pi_origin.c
 test_pi_fix: main_pi_fix.c
 	$(CC) $(CFLAGS) main_pi_fix.c -o $@ $(LDFLAGS)
 
+test_pi_fix: CFLAGS += -I../include -DUSE_LINUX
+
 origin: test_pi_origin
 	@sudo taskset -c 1 ./test_pi_origin
 
